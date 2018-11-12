@@ -12,6 +12,7 @@ public class LoadLevel : MonoBehaviour {
 	public TileBase[] rockTiles;
 	public Tilemap tilemap;
 	public Tilemap deathTileMap;
+	public GameObject cherry;
 	// Use this for initialization
 	void Start ()
 	{
@@ -19,6 +20,10 @@ public class LoadLevel : MonoBehaviour {
 		for (int i = 0; i < 64; i++)
 		{
 			tilemap.SetTile(new Vector3Int(Convert.ToInt32(i * 1.0f), 0, 0), grassTile);
+			if (UnityEngine.Random.Range(0, 100) > 90)
+			{
+				Instantiate(cherry, new Vector3Int(Convert.ToInt32(i * 1.0f), 1, 0), this.transform.rotation, this.transform);
+			}
 
 			for (int j = 1; j < 4; j++)
 			{

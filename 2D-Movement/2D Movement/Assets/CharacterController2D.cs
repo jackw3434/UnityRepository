@@ -76,6 +76,20 @@ public class CharacterController2D : MonoBehaviour
 		}
 	}
 
+	private int Score = 0;
+	//OnTriggerEnter2D is called whenever this object overlaps with a trigger collider.
+	void OnTriggerEnter2D(Collider2D other)
+	{
+		Debug.Log(other.gameObject.name);
+		if (other.gameObject.name == "Cherry(Clone)")
+		{
+			Score += 1;
+			Debug.Log(Score);
+		}
+		other.gameObject.SetActive(false);
+	}
+
+
 
 	public void Move(float move, bool crouch, bool jump)
 	{
