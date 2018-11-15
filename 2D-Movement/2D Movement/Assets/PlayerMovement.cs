@@ -31,12 +31,6 @@ public class PlayerMovement : MonoBehaviour {
 		float verticalMove = joystick.Vertical;
 		animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
-		if (verticalMove >= .5f)
-		{
-			jump = true;
-			animator.SetBool("IsJumping", true);
-		}
-
 		if (verticalMove <= -.5f)
 		{
 			crouch = true;
@@ -46,6 +40,11 @@ public class PlayerMovement : MonoBehaviour {
 			crouch = false;
 		}
 
+	}
+
+	public void CharJump() {
+		jump = true;
+		animator.SetBool("IsJumping", true);
 	}
 
 	public void OnLanding() {
