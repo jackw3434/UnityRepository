@@ -11,13 +11,31 @@ public class PlayerMovement : MonoBehaviour {
 	float horizontalMove = 0f;
 	bool jump = false;
 	bool crouch = false;
-	
-	// Update is called once per frame
-	void Update () {
 
-		horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+    protected Joystick joystick;
+    protected Joybutton joybutton;
 
-		animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+    private void Start()
+    {
+        joystick = FindObjectOfType<Joystick>();
+        joybutton = FindObjectOfType<Joybutton>();
+    }
+
+
+    // Update is called once per frame
+    void Update () {
+
+        var rigidbody = GetComponent<Rigidbody2D>();        
+     
+            rigidbody.velocity = new Vector3(joystick.Horizontal * 10f,
+            rigidbody.velocity.y,
+            joystick.Vertical * 10f);
+
+       
+
+        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+     
+        animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
 		if (Input.GetButtonDown("Jump"))
 		{
@@ -52,8 +70,9 @@ public class PlayerMovement : MonoBehaviour {
 
 	void FixedUpdate ()
 	{
-		// Move our character
-		controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
+      
+        // Move our character
+        controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
 		jump = false;
 	}
 }
