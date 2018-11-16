@@ -15,11 +15,11 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (joystick.Horizontal >= .2f)
+		if (joystick.Horizontal >= .1f)
 		{
 			horizontalMove = runSpeed;
 		}
-		else if (joystick.Horizontal <= -.2f)
+		else if (joystick.Horizontal <= -.1f)
 		{
 			horizontalMove = -runSpeed;
 		}

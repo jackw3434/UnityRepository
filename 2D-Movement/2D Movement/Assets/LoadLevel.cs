@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Timers;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -42,7 +43,7 @@ public class LoadLevel : MonoBehaviour {
 			tilemap.SetTile(new Vector3Int(Convert.ToInt32(i * 1.0f), 3, 0), floatingTiles[0]);
 			tilemap.SetTile(new Vector3Int(Convert.ToInt32(i+1 * 1.0f), 3, 0), floatingTiles[1]);
 			tilemap.SetTile(new Vector3Int(Convert.ToInt32(i+2 * 1.0f), 3, 0), floatingTiles[2]);
-			if (UnityEngine.Random.Range(0, 100) > 70)
+			if (UnityEngine.Random.Range(0, 100) > 50)
 			{
 				Instantiate(cherry, new Vector3Int(Convert.ToInt32(i+1 * 1.0f), 4, 0), this.transform.rotation, this.transform);
 			}
